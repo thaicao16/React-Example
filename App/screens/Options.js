@@ -1,17 +1,24 @@
 import React from "react";
-import { SafeAreaView, TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import { SafeAreaView, TouchableOpacity, View, Text, StyleSheet, Image, ScrollView, Linking, Alert } from "react-native";
 import colors from "../constants/colors";
 import dimen from "../constants/dimen";
 import textsize from "../constants/textsize";
-// import { Entypo } from "@expo/vector-icons"
+
+
+const openUrl = (url) => {
+    Linking.openURL(url).catch( () => {
+        Alert.alert('Something went wrong','Please try again')
+    })
+}
 
 
 const MainView = () => {
     return (
         <SafeAreaView style={[styleApp.container]}>
-            <TouchableOpacity style={[styleApp.rowChild]} onPress={() => alert("Themes")}>
+            <ScrollView>
+            <TouchableOpacity style={[styleApp.rowChild]} onPress={() => openUrl("https://reactnative.dev/")}>
                <Text style={[styleApp.textTitle]}>Themes Config</Text>
-               <Image source={require('./assets/images/ic_win.jpeg')} style={[styleApp.icon]}/>
+               <Image source={require('../assets/images/ic_win.jpeg')} style={[styleApp.icon]}/>
             </TouchableOpacity>
 
             <View style={[styleApp.separator]}/>
@@ -27,9 +34,150 @@ const MainView = () => {
             </TouchableOpacity>
 
             <View style={[styleApp.separator]}/>
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item"
+                onPress ={() => alert("thai test 1")} 
+                rightIcon = {require('../assets/images/ic_win.jpeg')}
+                />
+            
+            <RowSeparator />
+
+            <RowItem
+                title="Thai test Row Item 2"
+                onPress ={() => alert("thai test 2")} 
+                rightIcon = {require('../assets/images/left-arrow.png')}
+                />
+            
+            <RowSeparator />
+
+            </ScrollView>
         </SafeAreaView>
     )
 }
+
+export const RowItem = ({title, onPress, rightIcon}) => (
+    <TouchableOpacity style={[styleApp.rowChild]} onPress={onPress}>
+        <Text style={[styleApp.textTitle]}>{title}</Text>
+        <Image source={rightIcon} style={[styleApp.icon]}/>
+    </TouchableOpacity>
+)
+
+export const RowSeparator = () =>(
+    <View style={[styleApp.separator]}/>
+)
 
 
 const styleApp = StyleSheet.create({
