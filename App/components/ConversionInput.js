@@ -10,6 +10,10 @@ const style = StyleSheet.create({
         borderRadius: 5,
         flexDirection: "row"
     },
+    containerDisable: {
+        // backgroundColor: colors.offWhite,
+        backgroundColor: colors.gray,
+    },
     button: {
         padding: 15,
         borderColor: colors.border,
@@ -28,17 +32,23 @@ const style = StyleSheet.create({
         padding: 10,
         fontSize: 16,
         color: colors.textLight,
-        backgroundColor: colors.red
     }
 });
 
 export const ConversionInput = ({text, onButtonPress, ...props}) => {
+    const containerStyles = [style.container]
+    // if(props.editable === false) {
+    console.log("props.editable= "+ props.editable)
+    if(props.editable == false) {
+        console.log("containerStyles.push(style.containerDisable) ")
+        containerStyles.push(style.containerDisable)
+    }
     return (
-        <View style={[style.container]}>
+        <View style={containerStyles}>
             <TouchableOpacity onPress={onButtonPress} style={[style.button]}>
                 <Text style={style.buttonText}>{text}</Text>
             </TouchableOpacity>
-            <TextInput style={style.input}  {...props}/>
+            <TextInput style={style.input}{...props}/>
         </View>
     )
 }
