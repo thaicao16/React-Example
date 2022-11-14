@@ -71,7 +71,7 @@ const date = "2020-03-23";
 
 
 
-const mainApp = () => {
+const MainApp = ({navigation}) => {
 // export default () => {
 
 const [scrollEnabled, setScrollEnabled] = useState(false)
@@ -136,7 +136,7 @@ useEffect(() => {
                         <Text style={[styleApp.textDescription]}>1 {baseCurrency} = 0.835 {quoteCurrency} as of</Text>
 
                         {/* <Button title='test'>Button</Button> */}
-                        <Button text="Change Data" onPress={() => alert('TODO')} />
+                        <Button text="Change Data" onPress={() => navigation.navigate('Details')} />
                         <Button text="Reverse Currencies" onPress={() => alert("todo!")} />
                     </View>
 
@@ -148,4 +148,4 @@ useEffect(() => {
     )
 }
 
-export default mainApp
+export default MainApp
