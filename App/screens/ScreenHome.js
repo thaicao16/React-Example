@@ -21,7 +21,7 @@ const styleApp = StyleSheet.create({
 
 
 
-export default ScreenHome = () => {
+export default ScreenHome = ({navigation}) => {
     const [movieResponse, setMovieResponse] = useState(Array());
     console.log("Thai test start");
     // const getAllPlaying = () => axiosConfig.get('/movie/now_playing')
@@ -90,7 +90,7 @@ export default ScreenHome = () => {
             <FlatList
                 data={movieResponse}
                 renderItem={({ item }) => (
-                    <MovieItem  movie= {item}/>
+                    <MovieItem  movie= {item} onPress= { ()=> {navigation.navigate('Details', {movieItem: item, name: item.original_title})}}/>
                 )}
                 numColumns={2}
                 keyExtractor={(item, index) => index}
