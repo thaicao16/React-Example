@@ -11,4 +11,5 @@ export default {
     blue: "#4F6D7A",
     textLight: "#797979",
     offWhite: "#f0f0f0",
+    black: "#000000",
 }
