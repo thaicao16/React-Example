@@ -12,5 +12,6 @@ export default {
     textLight: "#797979",
     offWhite: "#f0f0f0",
     black: "#000000",
-    loadingBackground: "#60E2E2E2"
+    loadingBackground: "#60E2E2E2",
+    green: "#76d275"
 }

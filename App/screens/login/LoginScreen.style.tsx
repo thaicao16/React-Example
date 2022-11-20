@@ -3,6 +3,9 @@ import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 import dimen from '../../constants/dimens';
 import fonts from "../../theme/fonts";
 import dimens from "../../constants/dimens";
+import {LightTheme} from "../../theme/theme";
+// import colors from "../../constants/colors";
+import {useAppTheme} from "../../theme/theme";
 
 interface Style {
     container: ViewStyle,
@@ -13,13 +16,16 @@ interface Style {
     forgotPassword: ViewStyle,
 }
 
-export default (theme: ExtendedTheme) => {
-    const {colors}  = theme;
+// export default (theme: ExtendedTheme) => {
+export default () => {
+// export default () => {
+    const theme = useAppTheme();
+
     return StyleSheet.create<Style>({
         container: {
             flex: 1,
             padding: dimen.paddingNormal,
-            backgroundColor: colors.background,
+            backgroundColor: theme.colors.green
         },
         logoContainer: {
             justifyContent: 'center',
@@ -30,7 +36,6 @@ export default (theme: ExtendedTheme) => {
             height: 100,
         },
         mainContainer: {
-            backgroundColor: colors.borderColor,
             justifyContent: "center",
             alignContent:'center',
             flex: 1,
@@ -39,12 +44,13 @@ export default (theme: ExtendedTheme) => {
         textInputStyle: {
             fontFamily: fonts.sharpSans.bold,
             fontSize: dimens.textTitle,
-            marginTop:25
+            marginTop:25,
+            color: theme.colors.red
         },
         forgotPassword: {
-            fontFamily: fonts.sharpSans.bold,
+            fontFamily: fonts.sharpSans.regular,
             fontSize: dimens.textTitle,
-            color: colors.greenColor,
+            color: theme.colors.red,
             textAlign:'right',
             marginTop: 15
         }
