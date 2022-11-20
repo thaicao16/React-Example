@@ -1,13 +1,8 @@
-// import { ExtendedTheme } from "react-native-paper";
-import { DefaultTheme } from "react-native-paper";
-// import { LightTheme } from "../../theme/theme";
+import { ExtendedTheme } from "react-native-paper";
 import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 import dimen from '../../constants/dimens';
 import fonts from "../../theme/fonts";
 import dimens from "../../constants/dimens";
-
-import { useTheme } from 'react-native-paper';
-
 
 interface Style {
     container: ViewStyle,
@@ -18,10 +13,7 @@ interface Style {
     forgotPassword: ViewStyle,
 }
 
-export default (theme: DefaultTheme) => {
-// export default () => {
-    // const theme = useTheme();
-
+export default (theme: ExtendedTheme) => {
     const {colors}  = theme;
     return StyleSheet.create<Style>({
         container: {
@@ -42,10 +34,10 @@ export default (theme: DefaultTheme) => {
             justifyContent: "center",
             alignContent:'center',
             flex: 1,
+            
         },
         textInputStyle: {
-            // fontFamily: fonts.sharpSans.bold,
-            fontFamily: theme.fonts.bold,
+            fontFamily: fonts.sharpSans.bold,
             fontSize: dimens.textTitle,
             marginTop:25
         },
