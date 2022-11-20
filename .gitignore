@@ -7,3 +7,6 @@ vendor/
 package-lock.json
 ios/Podfile.lock
 android/.gradle/
+# Jest
+#
+.jest/

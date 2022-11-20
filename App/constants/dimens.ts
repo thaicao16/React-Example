@@ -8,4 +8,7 @@ export default {
     paddingMedium: 12,
     paddingSmall:8,
     paddingTini: 5,
+    textTitle: 16,
+    textContent: 14,
+    textButton: 18
 }
