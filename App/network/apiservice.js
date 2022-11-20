@@ -1,29 +1,29 @@
 
-import Constant from '../constants/Constants'
-import axios from 'axios'
+// import Constant from '../constants/Constants'
+// import axios from 'axios'
 
-// axios.defaults.baseURL = Constant.api_base_url;;
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-// axios.interceptors.response.use(res => res, err => Promise.reject(error));
+// // axios.defaults.baseURL = Constant.api_base_url;;
+// // axios.defaults.headers.post['Content-Type'] = 'application/json';
+// // axios.interceptors.response.use(res => res, err => Promise.reject(error));
 
-const instance = axios.create({
-    baseURL: Constant.api_base_url
-});
+// const instance = axios.create({
+//     baseURL: Constant.api_base_url
+// });
 
-instance.defaults.headers.post['Content-Type'] = 'application/json';
+// instance.defaults.headers.post['Content-Type'] = 'application/json';
 
-const apiKey = Constant.api_key;
+// const apiKey = Constant.api_key;
 
-const getAPI = (route) =>{
-    const uri = route + '?' + apiKey;
-    return instance.get(uri);
-}
+// const getAPI = (route) =>{
+//     const uri = route + '?' + apiKey;
+//     return instance.get(uri);
+// }
 
-const getAllMovieNowPlaying = () => {
-    return getAPI(Constant.getMovieNowPlaying)
-}
+// const getAllMovieNowPlaying = () => {
+//     return getAPI(Constant.getMovieNowPlaying)
+// }
 
-export default{
-    getAPI,
-    getAllMovieNowPlaying
-}
+// export default{
+//     getAPI,
+//     getAllMovieNowPlaying
+// }

@@ -1,54 +1,49 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, Component } from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useTheme, TextInput, Text, DefaultTheme, ExtendedTheme, Button } from 'react-native-paper';
 import createStyles from './LoginScreen.style'
 import { LightTheme } from "../../theme/theme";
-// import dimen from '../../constants/dimens';
-// import fonts from "../../theme/fonts";
-// import dimens from "../../constants/dimens";
+import axiosConfig from '../../config/AxiosConfig';
+import apiService from '../../network/apiservice';
 
 interface LoginScreenProps { }
 
+// const theme = LightTheme;
+// const style = useMemo(() => createStyles(theme), [theme])
+// function login () => {
 
-// const style = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         padding: dimen.paddingNormal,
-//     },
-//     logoContainer: {
-//         justifyContent: 'center',
-//         alignItems: 'center',        
-//     },
-//     logoStyle: {
-//         width: 100,
-//         height: 100,
-//     },
-//     mainContainer: {
-//         justifyContent: "center",
-//         alignContent:'center',
-//         flex: 1,
-        
-//     },
-//     textInputStyle: {
-//         fontFamily: fonts.sharpSans.bold,
-//         fontSize: dimens.textTitle,
-//         marginTop:25,
-//     },
-//     forgotPassword: {
-//         fontFamily: fonts.sharpSans.regular,
-//         fontSize: dimens.textTitle,
-//         textAlign:'right',
-//         marginTop: 15
-//     }
-// });
+//     apiService.postLogin("brian@pizzahut.io","112358@Anz")
+//         .then(res => {
+//             console.log(res.data)
+//         })
+//         .catch(error => {
+//             console.log("there was an error: " + error);
+//             if (error.response) {
+//                 // When response status code is out of 2xxx range
+//                 console.log(error.response.data);
+//                 console.log(error.response.status);
+//                 console.log(error.response.headers);
+//             } else if (error.request) {
+//                 //When no response was received after request was made
+//                 console.log(error.request);
+//             } else {
+//                 // Error
+//                 console.log(error.message);
+//             }
+//         })
+//   }
 
+
+
+// const [email, setEmail] = React.useState("");
+// const [password, setPassword] = React.useState("");
+// const [secureTextEntry, setSecureTextEntry] = useState(true);
+// const theme = LightTheme;
+// const style = useMemo(() => createStyles(theme), [theme])
 
 const LoginScreen: React.FC<LoginScreenProps> = () => {
-
-    // const theme = useTheme();
-    // const { colors } = theme;
-    
+// class LoginScreen extends Component {
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -56,11 +51,33 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
     const theme = LightTheme;
     const style = useMemo(() => createStyles(theme),[theme])
 
+    const login = () => {
+
+        apiService.postLogin("brian@pizzahut.io","112358@Anz")
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.log("there was an error: " + error);
+                if (error.response) {
+                    // When response status code is out of 2xxx range
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    //When no response was received after request was made
+                    console.log(error.request);
+                } else {
+                    // Error
+                    console.log(error.message);
+                }
+            })
+      }
+
     return (
         <SafeAreaView style={style.container} >
             <ScrollView >
                 <View style={style.mainContainer}>
-                    {/* <Image source={require('../../assets/images/ic_logo.webp')} style={style.logoStyle} /> */}
 
                     <View style={style.logoContainer}>
                         <Image source={require('../../assets/images/ic_logo.webp')} style={style.logoStyle} />
@@ -74,22 +91,6 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
                         placeholder='Please input email'
                         onChangeText={text => setEmail(text)}
                     />
-
-                    {/* <TextInput
-                        label="Password"
-                        value={password}
-                        mode='outlined'
-                        style={style.textInputStyle}
-                        placeholder='Please input password'
-                        onChangeText={text => setPassword(text)}
-                        right={<TextInput.Icon icon="eye" onPress={() => {
-                            setSecureTextEntry(!secureTextEntry);
-                            return false;
-                          }} />}
-                        secureTextEntry={true} 
-                        returnKeyType='go'
-
-                    /> */}
 
                     <TextInput
                         label="Password"
@@ -111,12 +112,113 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
 
                     <Text  style={style.forgotPassword}>Forgot password</Text>
 
-                    <Button mode= 'contained' style= {style.loginButton}>Login</Button>
+                    <Button onPress={() => {login}} mode= 'contained' style= {style.loginButton}>Login</Button>
                 </View>
             </ScrollView>
 
         </SafeAreaView>
     )
+
+    // const[email, setEmail] = React.useState("");
+    // const[password, setPassword] = React.useState("");
+    // const[secureTextEntry, setSecureTextEntry] = useState(true);
+    // const theme = LightTheme;
+    // const style = useMemo(() => createStyles(theme), [theme])
+
+    // constructor(props: {} | Readonly<{}>) {
+    //     super(props);
+    //     this.state = {
+    //         email: "",
+    //         password: "",
+    //         secureTextEntry: true,
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     console.log(' HOME componentDidMount');
+    //     this.login()
+    // }
+
+    // login = () => {
+    //     apiService.postLogin("brian@pizzahut.io", "112358@Anz")
+    //         .then(res => {
+    //             console.log(res.data)
+    //         })
+    //         .catch(error => {
+    //             console.log("there was an error: " + error);
+    //             if (error.response) {
+    //                 // When response status code is out of 2xxx range
+    //                 console.log(error.response.data);
+    //                 console.log(error.response.status);
+    //                 console.log(error.response.headers);
+    //             } else if (error.request) {
+    //                 //When no response was received after request was made
+    //                 console.log(error.request);
+    //             } else {
+    //                 // Error
+    //                 console.log(error.message);
+    //             }
+    //         })
+    // }
+
+
+    // render() {
+    //     return (
+    //         <SafeAreaView >
+
+    //             <TouchableOpacity onPress={() => {
+    //                 console.log("helloMaster123")
+    //             }} >
+    //                 <Text >Login Login</Text>
+    //             </TouchableOpacity>
+
+    //             <Button mode='contained' onPress={() => this.login()}>Login 2</Button>
+
+    //             {/* <ScrollView >
+    //                 <View style={style.mainContainer}>
+
+    //                     <View style={style.logoContainer}>
+    //                         <Image source={require('../../assets/images/ic_logo.webp')} style={style.logoStyle} />
+    //                     </View>
+
+    //                     <TextInput
+    //                         label="Email"
+    //                         value={this.state.email}
+    //                         mode='outlined'
+    //                         style={style.textInputStyle}
+    //                         placeholder='Please input email'
+    //                         onChangeText={text => setEmail(text)}
+    //                     />
+
+    //                     <TextInput
+    //                         label="Password"
+    //                         mode='outlined'
+    //                         style={style.textInputStyle}
+    //                         secureTextEntry={secureTextEntry}
+    //                         onChangeText={text => setPassword(text)}
+    //                         placeholder='Please input password'
+    //                         right={
+    //                             <TextInput.Icon
+    //                                 icon="eye"
+    //                                 onPress={() => {
+    //                                     setSecureTextEntry(!secureTextEntry);
+    //                                     return false;
+    //                                 }}
+    //                             />
+    //                         }
+    //                     />
+
+    //                     <Text style={style.forgotPassword}>Forgot password</Text>
+
+    //                     <Button mode='contained' style={style.loginButton}>Login</Button>
+    //                 </View>
+    //             </ScrollView> */}
+
+    //         </SafeAreaView>
+    //     )
+    // }
+
+
 }
 
 export default LoginScreen;
