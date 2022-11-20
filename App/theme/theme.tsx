@@ -1,4 +1,4 @@
-import { DefaultTheme, MD3DarkTheme,MD3LightTheme, Provider as PaperProvider, ExtendedTheme, useTheme } from 'react-native-paper'
+import { DefaultTheme, MD3DarkTheme,MD3LightTheme, Provider as PaperProvider, ExtendedTheme, useTheme, MD3Theme } from 'react-native-paper'
 // import colors from '../constants/colors'
 import { configureFonts } from './fonts'
 
@@ -80,37 +80,38 @@ import { configureFonts } from './fonts'
 // };
 
 
-export const LightTheme = {
-  ...MD3LightTheme,
+export const LightTheme: ExtendedTheme = {
+  ...DefaultTheme,
   dark: false,
   myOwnProperty: true,
   roundness: 4,
   colors: {
     // primary: '#6200ee',
-    // accent: '#03dac4',
+    // accent: '#343434',
     // background: '#f6f6f6',
     // surface: '#ffffff',
     // error: '#B00020',
-    // text: '#000000',
+    // // text: '#000000',
     // onSurface: '#000000',
     // disabled: 'rgba(0, 0, 0, 0.26)',
     // placeholder: 'rgba(0, 0, 0, 0.54)' ,
     // backdrop: 'rgba(0, 0, 0, 0.5)',
     // notification: '#f50057',
-    primaryColor: '#E8F7FE',
-    // primaryColor: 'red',
-    textTitle: '#37474F',
-    gray: '#D1D1D1',
-    red: 'red',
-    darkBlue: '#4f6d7a',
-    white: "#fff",
-    border: "#E2E2E2",
-    text: "#343434",
-    blue: "#4F6D7A",
-    textLight: "#797979",
-    offWhite: "#f0f0f0",
-    black: "#000000",
-    loadingBackground: "#60E2E2E2",
+    // // primaryColor: '#E8F7FE',
+    // primaryColor: '#4f6d7a',
+    // // primaryColor: 'red',
+    // textTitle: '#37474F',
+    // gray: '#D1D1D1',
+    // red: 'red',
+    // darkBlue: '#4f6d7a',
+    // white: "#fff",
+    // border: "#E2E2E2",
+    // text: "#343434",
+    // blue: "#4F6D7A",
+    // textLight: "#797979",
+    // offWhite: "#f0f0f0",
+    // black: "#000000",
+    // loadingBackground: "#60E2E2E2",
     green: "#76d275",
   },
   // fonts: configureFonts(),

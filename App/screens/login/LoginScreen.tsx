@@ -1,58 +1,60 @@
 import React, { useMemo, useState } from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, StyleSheet, Image, ScrollView } from 'react-native';
-import { useTheme, TextInput, Text } from 'react-native-paper';
-// import createStyles from './LoginScreen.style'
-// import { LightTheme } from "../../theme/theme";
-import dimen from '../../constants/dimens';
-import fonts from "../../theme/fonts";
-import dimens from "../../constants/dimens";
+import { useTheme, TextInput, Text, DefaultTheme, ExtendedTheme, Button } from 'react-native-paper';
+import createStyles from './LoginScreen.style'
+import { LightTheme } from "../../theme/theme";
+// import dimen from '../../constants/dimens';
+// import fonts from "../../theme/fonts";
+// import dimens from "../../constants/dimens";
 
 interface LoginScreenProps { }
 
 
-const style = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: dimen.paddingNormal,
-    },
-    logoContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',        
-    },
-    logoStyle: {
-        width: 100,
-        height: 100,
-    },
-    mainContainer: {
-        justifyContent: "center",
-        alignContent:'center',
-        flex: 1,
+// const style = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         padding: dimen.paddingNormal,
+//     },
+//     logoContainer: {
+//         justifyContent: 'center',
+//         alignItems: 'center',        
+//     },
+//     logoStyle: {
+//         width: 100,
+//         height: 100,
+//     },
+//     mainContainer: {
+//         justifyContent: "center",
+//         alignContent:'center',
+//         flex: 1,
         
-    },
-    textInputStyle: {
-        fontFamily: fonts.sharpSans.bold,
-        fontSize: dimens.textTitle,
-        marginTop:25,
-    },
-    forgotPassword: {
-        fontFamily: fonts.sharpSans.regular,
-        fontSize: dimens.textTitle,
-        textAlign:'right',
-        marginTop: 15
-    }
-});
+//     },
+//     textInputStyle: {
+//         fontFamily: fonts.sharpSans.bold,
+//         fontSize: dimens.textTitle,
+//         marginTop:25,
+//     },
+//     forgotPassword: {
+//         fontFamily: fonts.sharpSans.regular,
+//         fontSize: dimens.textTitle,
+//         textAlign:'right',
+//         marginTop: 15
+//     }
+// });
+
 
 const LoginScreen: React.FC<LoginScreenProps> = () => {
 
     // const theme = useTheme();
     // const { colors } = theme;
-    // const style = useMemo(() => createStyles(), [LightTheme])
+    
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [secureTextEntry, setSecureTextEntry] = useState(true);
-
+    const theme = LightTheme;
+    const style = useMemo(() => createStyles(theme),[theme])
 
     return (
         <SafeAreaView style={style.container} >
@@ -108,6 +110,8 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
                     />
 
                     <Text  style={style.forgotPassword}>Forgot password</Text>
+
+                    <Button mode= 'contained' style= {style.loginButton}>Login</Button>
                 </View>
             </ScrollView>
 
