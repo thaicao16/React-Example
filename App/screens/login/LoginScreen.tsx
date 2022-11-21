@@ -6,6 +6,8 @@ import createStyles from './LoginScreen.style'
 import { LightTheme } from "../../theme/theme";
 // import ApiService from '../../network/apiservice';
 import ApiService from '../../network/serviceApi';
+import {SCREENS} from '../../navigation/screen';
+import * as NavigationService from "react-navigation-helpers";
 
 interface LoginScreenProps { }
 
@@ -63,7 +65,7 @@ interface LoginScreenProps { }
 // const theme = LightTheme;
 // const style = useMemo(() => createStyles(theme), [theme])
 
-const LoginScreen: React.FC = () => {
+const LoginScreen: React.FC = ({navigation}) => {
     // class LoginScreen extends Component {
 
     const [email, setEmail] = React.useState("");
@@ -72,16 +74,23 @@ const LoginScreen: React.FC = () => {
     const theme = LightTheme;
     const style = useMemo(() => createStyles(theme), [theme])
 
+    const handleNavigateToOTPScreen = (uuid: string) => {
+        console.log('handleNavigateToOTPScreen: ' + uuid);
+        // NavigationService.push(SCREENS.LOGIN_OTP, uuid);
+        navigation.navigate(SCREENS.LOGIN_OTP, {uuid: uuid, name: 'Login Now'});
+      };
+
     const login = () => {
 
         var data = {
-            email: "brian@pizzahut.io",
-            password: "112358@Anz"
+            email: "thaiduc.cao@yum.com",
+            password: "Thai@123"
         };
         console.log('login test: ' + data);
         ApiService.postLoginUser(data)
             .then((response: any) => {
                 console.log(response)
+                handleNavigateToOTPScreen(response.data.data.uuid)
             })
             .catch((e: Error) => {
                 console.log(e);

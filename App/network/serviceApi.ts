@@ -2,6 +2,7 @@
 import Constant from '../constants/Constants'
 import http from "./http-common";
 import ILoginRequest from '../data/LoginRequest';
+import ILoginOTPRequest from '../data/LoginOTPRequest';
 
 // axios.defaults.baseURL = Constant.api_base_url;;
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -35,10 +36,16 @@ const postLoginUser = (data: ILoginRequest) => {
     return http.post<ILoginRequest>(Constant.login, data)
 }
 
+const postLoginOTP = (data: ILoginOTPRequest) => {
+    console.log('postLoginOTP: '+ data);
+    return http.post<ILoginOTPRequest>(Constant.login_otp, data)
+}
+
 const ApiService = {
     getAPI,
     postLogin,
     postLoginUser,
+    postLoginOTP,
   };
 
 export default ApiService;
